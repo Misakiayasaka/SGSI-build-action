@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
@@ -70,4 +70,7 @@ jobs:
               mv "${{ steps.config.outputs.repack_name }}" "upload/${{ steps.config.outputs.repack_name }}"
           fi
           ls "upload"
+
+      - name: Repack Output File
+        run: |       
           curl -F file=@*.zip https://temp.sh/upload
